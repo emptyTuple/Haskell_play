@@ -13,6 +13,8 @@ data BTree a = Leaf a | Branch (BTree a) (BTree a)
 Напишите функцию reverse :: BinTree a -> BinTree a, которая переворачивает дерево. 
 Она меняет местами два элемента в узле дерева.
 -}
-reverse :: BTree a -> BTree a
-reverse = undefined
+reverse' :: BTree a -> BTree a
+reverse' (Leaf x) = Leaf x
+reverse' (Branch a b) = Branch (reverse' b) (reverse' a)
+
 
