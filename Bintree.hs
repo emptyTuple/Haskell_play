@@ -24,7 +24,15 @@ reverse' ( Branch a b ) = Branch (reverse' b) (reverse' a)
 Напишите функцию depth :: BinTree a -> Nat, которая вычисляет глубину дерева, 
 то есть самый длинный путь от корня дерева к листу.
 -}
-depth' :: BTree a -> Nat
-depth' ( Leaf _ )     = Succ Zero
-depth' ( Branch a b ) = Succ Zero + max (depth' a) (depth' b)
+depth' :: BTree a -> Peano.Nat
+depth' ( Leaf _ )     = Peano.Succ Peano.Zero
+depth' ( Branch a b ) = Peano.Succ Peano.Zero + max (depth' a) (depth' b)
+
+-- task t4
+{-
+Напишите функцию leaves :: BinTree a -> [a], которая переводит бинарное дерево в список, 
+возвращая все элементы в листьях дерева.
+-}
+leaves :: BTree a -> [a]
+leaves = undefined
 
