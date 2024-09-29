@@ -34,5 +34,8 @@ depth' ( Branch a b ) = Peano.Succ Peano.Zero + max (depth' a) (depth' b)
 возвращая все элементы в листьях дерева.
 -}
 leaves :: BTree a -> [a]
-leaves = undefined
+leaves ( Leaf a )     = [a]
+leaves ( Branch a b ) = leaves a ++ leaves b 
+
+
 
