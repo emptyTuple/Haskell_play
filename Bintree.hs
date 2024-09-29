@@ -16,8 +16,8 @@ data BTree a = Leaf a | Branch (BTree a) (BTree a)
 Она меняет местами два элемента в узле дерева.
 -}
 reverse' :: BTree a -> BTree a
-reverse' (Leaf x) = Leaf x
-reverse' (Branch a b) = Branch (reverse' b) (reverse' a)
+reverse' ( Leaf x )     = Leaf x
+reverse' ( Branch a b ) = Branch (reverse' b) (reverse' a)
 
 -- task t3
 {-
@@ -25,6 +25,6 @@ reverse' (Branch a b) = Branch (reverse' b) (reverse' a)
 то есть самый длинный путь от корня дерева к листу.
 -}
 depth' :: BTree a -> Nat
-depth' (Leaf _) = Succ Zero
-depth' (Branch a b) = Succ Zero + max (depth' a) (depth' b)
+depth' ( Leaf _ )     = Succ Zero
+depth' ( Branch a b ) = Succ Zero + max (depth' a) (depth' b)
 
