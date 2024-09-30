@@ -65,7 +65,7 @@ pred' (Succ y) = y
 
 -- get integer
 toInt :: Nat -> Int
-toInt Nil = 0
+toInt Nil        = 0
 toInt (Succ Nil) = 1
-toInt x = 1 + toInt y
-  where Succ y = x
+toInt x          = 1 + toInt y
+  where Succ y   = x
