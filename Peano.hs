@@ -60,5 +60,12 @@ isEven x              = isEven y
 
 -- get predecessor
 pred' :: Nat -> Nat
-pred' Nil = error "Undefined"
+pred' Nil      = error "Undefined"
 pred' (Succ y) = y
+
+-- get integer
+toInt :: Nat -> Int
+toInt Nil = 0
+toInt (Succ Nil) = 1
+toInt x = 1 + toInt y
+  where Succ y = x
