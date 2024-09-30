@@ -41,12 +41,17 @@ isNotNeighbour a b
   | b == Succ a = False
   |otherwise    = True
 
+-- | get both neighbours
+getBothNeighbours :: Nat -> (Nat, Nat)
+getBothNeighbours Nil = error "Undefined"
+getBothNeighbours x@(Succ y) = (y, Succ x)
+
 -- pow function
 pow :: Nat -> Nat -> Nat
 pow _ Nil      = Succ Nil
 pow a (Succ b) = a * pow a b
 
--- even/odd
+-- | even/odd
 isEven :: Nat -> Bool
 isEven Nil            = True
 isEven (Succ Nil)     = False
