@@ -27,25 +27,22 @@ instance Num Nat where
   fromInteger 0 = Zero
   fromInteger n = Succ (fromInteger (n - 1))
   
--- task 1
-beside :: Nat -> Nat -> Bool
-beside a b
+-- neighbours
+isNeighbour :: Nat -> Nat -> Bool
+isNeighbour a b
   | a == Succ b = True
   | b == Succ a = True
   | otherwise = False
 
--- task 2 v1
-beside2 :: Nat -> Nat -> Bool
-beside2 a b 
+-- not neighbour
+isNotNeighbour :: Nat -> Nat -> Bool
+isNotNeighbour a b 
   | a == b = False
   | a == Succ b = False
   | b == Succ a = False
   |otherwise = True
 
--- task 3 - done!
-
--- task 4
+-- pow function
 pow :: Nat -> Nat -> Nat
 pow _ Zero = Succ Zero
 pow a (Succ b) = a * pow a b
-
