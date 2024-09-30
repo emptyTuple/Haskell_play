@@ -57,3 +57,8 @@ isEven Nil            = True
 isEven (Succ Nil)     = False
 isEven x              = isEven y
   where Succ (Succ y) = x
+
+-- get predecessor
+pred' :: Nat -> Nat
+pred' Nil = error "Undefined"
+pred' (Succ y) = y
