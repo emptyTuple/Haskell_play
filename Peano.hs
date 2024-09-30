@@ -2,7 +2,14 @@ module Peano where
 
 -- succedent
 data Nat = Zero | Succ Nat
-  deriving (Show, Eq, Ord)
+  deriving (Show, Ord)
+
+instance Eq Nat where
+  (==) a b =
+    case (a, b) of
+      (Zero, Zero)       -> True
+      (Succ a', Succ b') -> a' == b'
+      _                  -> False
 
 instance Num Nat where
   (+) Zero a = a

@@ -1,6 +1,12 @@
 module Sandbox where
 
-import Data.Char
+
+data Bool' where
+  T :: Bool'
+  F :: Bool' 
+  deriving Show
+
+
 
 
 
