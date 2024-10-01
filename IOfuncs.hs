@@ -9,7 +9,6 @@ printFromTo x y
                    printFromTo (x + 1) y
 
 -- ask for non empty input
-
 nonEmpty :: IO String
 nonEmpty = do
     x <- getLine
