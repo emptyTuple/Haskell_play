@@ -8,3 +8,13 @@ printFromTo x y
   | otherwise = do print x
                    printFromTo (x + 1) y
 
+-- ask for non empty input
+
+nonEmpty :: IO String
+nonEmpty = do
+    x <- getLine
+    case x of
+        "" -> do putStrLn "empty, try again:"
+                 nonEmpty
+        _  -> return x
+
