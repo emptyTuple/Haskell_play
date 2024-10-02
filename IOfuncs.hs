@@ -22,5 +22,16 @@ nonEmpty = do
     case x of
         "" -> do putStrLn "empty, try again:"
                  nonEmpty
-        _  -> return x
+        _  -> do return x
 
+-- double wrapped IO (do not compile without type declaration)
+doubleIO :: IO (IO String)
+doubleIO = return $ return "Something"
+
+-- unwrap doubleIO
+unwrapDoubleIO :: IO ()
+unwrapDoubleIO = do
+    firstUnwrapping <- doubleIO
+    firstUnwrapping >>= putStrLn
+
+    
