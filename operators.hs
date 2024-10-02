@@ -1,14 +1,14 @@
--- оператор - это функция, используемая в инфиксной записи
--- для использования оператора как функции используем круглые скобки
+-- operator is an infix form of a function
+-- use () for functional style operator applying
 summator :: Int -> Int -> Int -> Int
 summator x y z =
     (+) x y + z
 
--- точно также можно использовать backticks для использования
--- функций в инфиксон стиле: 5 `div` 2
+
+-- use backticks for infix function applying: 5 `div` 2
 
 {-
-Приоритеты операторов:
+operators priority:
 infixr 9  .
 infixl 9  !!
 infixr 8  ^, ^^, **
