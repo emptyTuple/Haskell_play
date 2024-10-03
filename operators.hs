@@ -4,7 +4,6 @@ summator :: Int -> Int -> Int -> Int
 summator x y z =
     (+) x y + z
 
-
 -- use backticks for infix function applying: 5 `div` 2
 
 {-
