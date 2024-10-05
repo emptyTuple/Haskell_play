@@ -1,5 +1,7 @@
 module MoskvinTasks where
 
+import Data.Char
+
 -- Некоторые задачи с курса Дениса Москвина
 
 {-
@@ -13,6 +15,17 @@ seqA n = let
          in helper 1 2 3 n
 
 -- Реализуйте функцию, находящую сумму и количество цифр десятичной записи заданного целого числа.
-sum'n'count :: Integer -> (Integer, Integer)
-sum'n'count = undefined
 
+sum'n'count :: Integer -> (Integer, Integer)
+sum'n'count n = (x1, x2)
+  where
+    x1 = toInteger . length . show . abs $ n
+    x2 = toInteger . sum . map digitToInt . show. abs $ n
+
+
+sum'n'count' :: Integer -> (Integer, Integer)
+sum'n'count' n = helper (abs n) 0 0 
+  where
+    helper 0 0 0 = (1, 0)
+    helper 0 sm am = (sm, am)
+    helper x sm am = helper (div x 10) (sm + mod n 10) (am + 1)
