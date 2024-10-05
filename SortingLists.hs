@@ -1,6 +1,6 @@
 module SortingLists where
 
--- | INSERT SORT
+-- | INSERT SORT O(n^2)
 insertSort :: Ord t => [t] -> [t]
 insertSort [] = []
 insertSort (x:xs) = insert x $ insertSort xs
