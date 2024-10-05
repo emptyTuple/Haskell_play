@@ -26,6 +26,6 @@ sum'n'count n = (x1, x2)
 sum'n'count' :: Integer -> (Integer, Integer)
 sum'n'count' n = helper (abs n) 0 0 
   where
-    helper 0 0 0 = (1, 0)
+    helper 0 0 0 = (0, 1)
     helper 0 sm am = (sm, am)
     helper x sm am = helper (div x 10) (sm + mod n 10) (am + 1)
