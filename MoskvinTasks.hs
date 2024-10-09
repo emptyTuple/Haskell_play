@@ -29,3 +29,49 @@ sum'n'count' n = helper (abs n) 0 0
     helper 0 0 0 = (0, 1)
     helper 0 sm am = (sm, am)
     helper x sm am = helper (div x 10) (sm + mod n 10) (am + 1)
+
+
+{- Реализуйте функцию on3, имеющую семантику, схожую с on, 
+   но принимающую в качестве первого аргумента трехместную функцию:
+ -}
+
+foo :: a -> (a, b) -> a -> (b, a, a)
+foo x pair = (,,) (snd pair) x
+
+foo' :: a -> (a, b) -> a -> (b, a, a)
+foo' x pair y = (,,) (snd pair) y x
+
+
+class Printable a where
+  toString :: a -> String
+
+
+instance Printable Bool where
+  toString True = "true"
+  toString False = "false"
+
+instance Printable () where
+  toString () = "unit type"
+
+instance (Printable a, Printable b) => Printable (a, b) where
+  toString (x, y) = "(" ++ toString x ++ "," ++ toString y ++ ")"
+
+
+class (Enum a, Bounded a, Eq a) => SafeEnum a where
+  ssuc ::  a -> a
+  spred :: a -> a
+
+  ssuc x
+    | x == maxBound = minBound
+    | otherwise = succ x
+
+  spred x
+    | x == minBound = maxBound
+    | otherwise = pred x
+
+instance SafeEnum Bool
+
+
+avg :: Int -> Int -> Int -> Double
+avg a b c = fromInteger (toInteger a + toInteger b + toInteger c) / 3
+
