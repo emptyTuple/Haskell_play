@@ -27,12 +27,24 @@ max' (x:xs) = helper x xs
 
 -- list index operator like (!!)
 -- index starts from 0
-(!!!) :: (Ord a, Integral b) => [a] -> b -> a
+(!!!) :: Integral b => [a] -> b -> a
 _      !!! n | n < 0 = error "Index must be positive."
 []     !!! _         = error "Index out of range."
 (x:_)  !!! 0         = x
 (_:xs) !!! n         = xs !!! (n - 1)
 
 -- take function
-take' :: (Ord b, Integral a) => a -> [b] -> [b]
-take' = undefined
+take' :: Integral a => a -> [b] -> [b]
+take' n _ | n <= 0 = []
+take' _ []         = []
+take' n (x:xs)     = x : take' (n - 1) xs
+
+-- drop function
+drop' :: Integral a => a -> [b] -> [b]
+drop' n xs | n <= 0 = xs
+drop' _ []          = []
+drop' n (_:xs)      = drop' (n - 1) xs
+
+-- splitAt function
+splitAt' :: Integral a => a -> [b] -> ([b], [b])
+splitAt' n xs = (take' n xs, drop' n xs)
