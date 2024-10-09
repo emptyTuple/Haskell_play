@@ -1,4 +1,4 @@
-module BasicListFinctions where
+module BasicListFunctions where
 
 -- sum of list elements
 sum' :: Num a => [a] -> a
