@@ -48,3 +48,9 @@ drop' n (_:xs)      = drop' (n - 1) xs
 -- splitAt function
 splitAt' :: Integral a => a -> [b] -> ([b], [b])
 splitAt' n xs = (take' n xs, drop' n xs)
+
+-- zip function
+zip' :: [a] -> [b] -> [(a,b)]
+zip' _ []          = []
+zip' [] _          = []
+zip' (x:xs) (y:ys) = (x,y) : zip' xs ys
