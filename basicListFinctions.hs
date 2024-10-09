@@ -25,7 +25,7 @@ max' (x:xs) = helper x xs
       | acc < y   = helper y ys
       | otherwise = helper acc ys
 
--- list index operator (!!)
+-- list index operator like (!!)
 -- index starts from 0
 (!!!) :: (Ord a, Integral b) => [a] -> b -> a
 _     !!! n | n < 0 = error "index must be positive"
@@ -33,3 +33,6 @@ _     !!! n | n < 0 = error "index must be positive"
 (x:_)  !!! 0 = x
 (_:xs) !!! n = xs !!! (n - 1)
 
+-- take function
+take' :: (Ord b, Integral a) => a -> [b] -> [b]
+take' = undefined
