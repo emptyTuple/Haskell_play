@@ -28,8 +28,8 @@ max' (x:xs) = helper x xs
 -- list index operator like (!!)
 -- index starts from 0
 (!!!) :: (Ord a, Integral b) => [a] -> b -> a
-_     !!! n | n < 0 = error "index must be positive"
-[]     !!! _ = error "index too large"
+_      !!! n | n < 0 = error "Index must be positive."
+[]     !!! _ = error "Index out of range."
 (x:_)  !!! 0 = x
 (_:xs) !!! n = xs !!! (n - 1)
 
