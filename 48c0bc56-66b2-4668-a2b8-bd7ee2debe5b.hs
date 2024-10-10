@@ -35,11 +35,11 @@ sum'n'count' n = helper (abs n) 0 0
 (если они идут подряд) и возвращает список таких групп.
 Разрешается использовать только функции, доступные из библиотеки Prelude.
 -}
-groupElems :: Eq a => [a] -> [[a]]
-groupElems [] = []
-groupElems (x : y : xs) | x /= y = [x] : groupElems (y : xs)
-groupElems (x : xs) =
-  case groupElems xs of
+splitAtDup :: Eq a => [a] -> [[a]]
+splitAtDup (x : y : xs) | x == y = [x] : splitAtDup (y : xs)
+splitAtDup (x : xs) =
+  case splitAtDup xs of
     x' : xs' -> (x : x') : xs'
     _ -> [[x]]
+splitAtDup [] = []
 

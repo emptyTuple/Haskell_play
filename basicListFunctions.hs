@@ -67,3 +67,18 @@ unzip'' [] = ([], [])
 unzip'' ((x, y):xys) = 
   let (xs, ys) = unzip'' xys
   in (x:xs, y:ys)
+
+-- filter function
+filter' :: (t -> Bool) -> [t] -> [t]
+filter' _ [] = []
+filter' p (x:xs)
+  | p x       = x : filter' p xs
+  | otherwise = filter' p xs
+
+-- takeWhile function
+takeWhile' :: (a -> Bool) -> [a] -> [a]
+takeWhile' _ [] = []
+takeWhile' p (x:xs)
+  | p x = x : takeWhile' p xs
+  | otherwise = []
+
