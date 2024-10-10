@@ -57,4 +57,9 @@ zip' (x:xs) (y:ys) = (x,y) : zip' xs ys
 
 -- unzip function
 unzip' :: [(a,b)] -> ([a], [b])
-unzip' = undefined
+unzip' [] = ([], [])
+unzip' ((x, y):xys) = 
+  let (xs, ys) = unzip' xys
+  in (x:xs, y:ys)
+
+
