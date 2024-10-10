@@ -59,7 +59,11 @@ zip' (x:xs) (y:ys) = (x,y) : zip' xs ys
 unzip' :: [(a,b)] -> ([a], [b])
 unzip' [] = ([], [])
 unzip' ((x, y):xys) = 
-  let (xs, ys) = unzip' xys
+  (x:xs, y:ys) where
+    (xs, ys) = unzip' xys
+
+unzip'' :: [(a,b)] -> ([a], [b])
+unzip'' [] = ([], [])
+unzip'' ((x, y):xys) = 
+  let (xs, ys) = unzip'' xys
   in (x:xs, y:ys)
-
-
