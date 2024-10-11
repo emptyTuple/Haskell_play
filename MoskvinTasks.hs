@@ -43,3 +43,7 @@ groupElems (x : xs) =
     x' : xs' -> (x : x') : xs'
     _ -> [[x]]
 
+
+readDigits :: String -> (String, String)
+readDigits "" = ""
+readDigits 
