@@ -89,3 +89,11 @@ dropWhile' p xs@(x:xs')
   | p x = dropWhile' p xs'
   | otherwise = xs
 
+-- span function
+span' :: (a -> Bool) -> [a] -> ([a], [a])
+span' p xs = (takeWhile' p xs, dropWhile' p xs)
+
+-- break function
+break' :: (a -> Bool) -> [a] -> ([a], [a])
+break' p = span' (not . p)
+
