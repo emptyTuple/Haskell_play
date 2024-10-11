@@ -58,3 +58,13 @@ readDigits' z@(x:xs)
       let (prefix, body) = readDigits' xs
       in (x:prefix, body)
   | otherwise = ([], z)
+
+{-
+Реализуйте функцию filterDisj, принимающую два унарных предиката и список, 
+и возвращающую список элементов, удовлетворяющих хотя бы одному из предикатов.
+-}
+filterDisj :: (a -> Bool) -> (a -> Bool) -> [a] -> [a]
+filterDisj _ _ [] = []
+filterDisj p1 p2 (x:xs)
+  | p1 x || p2 x = x : filterDisj p1 p2 xs
+  | otherwise = filterDisj p1 p2 xs
