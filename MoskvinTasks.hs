@@ -44,6 +44,17 @@ groupElems (x : xs) =
     _ -> [[x]]
 
 
+{-
+Напишите функцию readDigits, принимающую строку и возвращающую пару строк.
+Первый элемент пары содержит цифровой префикс исходной строки, а второй - ее оставшуюся часть.
+-}
 readDigits :: String -> (String, String)
-readDigits "" = ""
-readDigits 
+readDigits = span isDigit
+
+readDigits' :: String -> (String, String)
+readDigits' [] = ([], [])
+readDigits' z@(x:xs)
+  | isDigit x = 
+      let (prefix, body) = readDigits' xs
+      in (x:prefix, body)
+  | otherwise = ([], z)
