@@ -98,3 +98,13 @@ span' p xs = (takeWhile' p xs, dropWhile' p xs)
 break' :: (a -> Bool) -> [a] -> ([a], [a])
 break' p = span' (not . p)
 
+-- map function
+map' :: (a -> b) -> [a] -> [b]
+map' _ []     = []
+map' f (x:xs) = f x : map' f xs
+
+-- concat function
+concat' :: [[a]] -> [a]
+concat' [] = []
+concat' (xs:xss) = xs ++ concat' xss
+
