@@ -105,6 +105,9 @@ map' f (x:xs) = f x : map' f xs
 
 -- concat function
 concat' :: [[a]] -> [a]
-concat' [] = []
+concat' []       = []
 concat' (xs:xss) = xs ++ concat' xss
 
+-- concatMap function
+concatMap' :: (a -> [b]) -> [a] -> [b]
+concatMap' f = concat . map f
