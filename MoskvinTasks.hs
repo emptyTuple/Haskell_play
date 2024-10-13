@@ -96,3 +96,16 @@ perms (x:xs) = concatMap (addX x) (perms xs)
     addX z [] = [[z]]
     addX z yss@(y:ys) = (z:yss) : map (y:) (addX z ys)
 
+{-
+Реализуйте функцию delAllUpper, удаляющую из текста все слова, целиком состоящие 
+из символов в верхнем регистре. Предполагается, что текст состоит только из символов 
+алфавита и пробелов, знаки пунктуации, цифры и т.п. отсутствуют.
+GHCi> delAllUpper "Abc IS not ABC"
+GHCi> "Abc not"
+Постарайтесь реализовать эту функцию как цепочку композиций.
+-}
+delAllUpper :: String -> String
+delAllUpper = unwords . filter (not . all isUpper) . words
+
+delAllUpper' :: String -> String
+delAllUpper' = unwords . filter (any isLower) . words
