@@ -112,7 +112,7 @@ concat' (xs:xss) = xs ++ concat' xss
 concatMap' :: (a -> [b]) -> [a] -> [b]
 concatMap' f = concat . map f
 
-{- and functions for a list of boolean values
+{- "and" functions for a list of boolean values
 returning True if all the list elements are True (an empty list is True too)
 -}
 and' :: [Bool] -> Bool
@@ -120,10 +120,25 @@ and' []     = True
 and' (x:xs) = x && and' xs
 
 {-
-Similarly define or function that returns True if a single element is True
+similarly define "or" function that returns True if a single element is True
 (an empty list is False here)
 -}
 or' :: [Bool] -> Bool
 or' []     = False
 or' (x:xs) = x || or' xs
+
+{-
+"all" function that returns True if all the results of a predicat function
+with all the list elements are True
+-}
+all' :: (a -> Bool) -> [a] -> Bool
+all' _ [] = False
+all' p xs = and' . map p $ xs
+
+{-
+"any" function tests a list if one of the results of the predicat is True
+-}
+any' :: (a -> Bool) -> [a] -> Bool
+any' _ [] = False
+any' p xs = or' . map p $ xs
 
