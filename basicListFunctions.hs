@@ -151,3 +151,17 @@ repeat' x = xs where xs = x : xs
 -- replicate is a function producing a value in a list n times
 replicate' :: Int -> a -> [a]
 replicate' n x = take n $ repeat' x
+
+-- the cycle function produce an endless sequence repeating its list argument
+cycle' :: [a] -> [a]
+cycle' [] = error "a bad argument"
+cycle' xs = ys where ys = xs ++ ys
+
+{- the iterate function gives a function and an initial value and
+produce an endless list like: x -> f x -> f (f x) -> ... -> f.....f(x)
+λ: take 5 $ iterate' (^ 2) 3
+>> [3,9,81,6561,43046721]
+-}
+iterate' :: (a -> a) -> a -> [a]
+iterate' f x = x : iterate' f (f x)
+
