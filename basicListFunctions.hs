@@ -111,3 +111,19 @@ concat' (xs:xss) = xs ++ concat' xss
 -- concatMap function
 concatMap' :: (a -> [b]) -> [a] -> [b]
 concatMap' f = concat . map f
+
+{- and functions for a list of boolean values
+returning True if all the list elements are True (an empty list is True too)
+-}
+and' :: [Bool] -> Bool
+and' []     = True
+and' (x:xs) = x && and' xs
+
+{-
+Similarly define or function that returns True if a single element is True
+(an empty list is False here)
+-}
+or' :: [Bool] -> Bool
+or' []     = False
+or' (x:xs) = x || or' xs
+

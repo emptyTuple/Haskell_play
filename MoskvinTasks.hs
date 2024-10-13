@@ -15,7 +15,6 @@ seqA n = let
          in helper 1 2 3 n
 
 -- Реализуйте функцию, находящую сумму и количество цифр десятичной записи заданного целого числа.
-
 sum'n'count :: Integer -> (Integer, Integer)
 sum'n'count n = (x1, x2)
   where
@@ -68,4 +67,32 @@ filterDisj _ _ [] = []
 filterDisj p1 p2 (x:xs)
   | p1 x || p2 x = x : filterDisj p1 p2 xs
   | otherwise = filterDisj p1 p2 xs
+
+{-
+Напишите функцию squares'n'cubes, принимающую список чисел,
+и возвращающую список квадратов и кубов элементов исходного списка.
+-}
+
+squares'n'cubes :: Num a => [a] -> [a]
+squares'n'cubes = concatMap (\x -> [x ^ 2, x ^ 3]) 
+
+squares'n'cubes' :: Floating a => [a] -> [a]
+squares'n'cubes' [] = []
+squares'n'cubes' (x:xs) = x ** 2 : x ** 3 : squares'n'cubes' xs
+
+{-
+Воспользовавшись функциями map и concatMap, определите функцию perms, 
+которая возвращает все перестановки, которые можно получить из данного списка, 
+в любом порядке.
+Считайте, что все элементы в списке уникальны, и что для пустого списка 
+имеется одна перестановка.
+GHCi> perms [1,2,3]
+GHCi> [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+-}
+perms :: [a] -> [[a]]
+perms [] = [[]]
+perms (x:xs) = concatMap (addX x) (perms xs)
+  where
+    addX z [] = [[z]]
+    addX z yss@(y:ys) = (z:yss) : map (y:) (addX z ys)
 
