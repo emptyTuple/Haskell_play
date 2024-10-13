@@ -142,3 +142,12 @@ any' :: (a -> Bool) -> [a] -> Bool
 any' _ [] = False
 any' p xs = or' . map p $ xs
 
+-- Some functions generating endless lists
+
+-- produce of endless sequence of the same value
+repeat' :: a -> [a]
+repeat' x = xs where xs = x : xs
+
+-- replicate is a function producing a value in a list n times
+replicate' :: Int -> a -> [a]
+replicate' n x = take n $ repeat' x
