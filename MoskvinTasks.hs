@@ -109,3 +109,23 @@ delAllUpper = unwords . filter (not . all isUpper) . words
 
 delAllUpper' :: String -> String
 delAllUpper' = unwords . filter (any isLower) . words
+
+{-
+Напишите функцию max3, которой передаются три списка одинаковой длины и которая 
+возвращает список той же длины, содержащий на k-ой позиции наибольшее значение 
+из величин на этой позиции в списках-аргументах.
+GHCi> max3 [7,2,9] [3,6,8] [1,8,10]
+GHCi> [7,8,10]
+GHCi> max3 "AXZ" "YDW" "MLK"
+GHCi> "YXZ"
+-}
+max3 :: Ord a => [a] -> [a] -> [a] -> [a]
+max3 = zipWith3 (\x y -> max (max x y))
+
+{-
+Реализуйте c использованием функции zipWith функцию fibStream, возвращающую 
+бесконечный список чисел Фибоначчи.
+-}
+fibStream :: [Integer]
+fibStream = 0 : 1 : zipWith (+) fibStream (tail fibStream)
+
