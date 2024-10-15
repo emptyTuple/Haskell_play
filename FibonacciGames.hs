@@ -23,3 +23,13 @@ fibonacci''' :: Int -> Integer
 fibonacci''' = helper (0,1)
   where helper (x, _) 0 = x
         helper (x, y) n = helper (y, x + y) (n - 1)
+
+{-  | take n-th number from endless fibonacci list,
+      count from 1: fib 1 -> 0, fib 2 -> 1, fib 3 -> 1 ... fib 20 -> 4181 ... 
+-}
+getNthFib :: Int -> Integer
+getNthFib n
+  | n <= 0    = error "start from 1"
+  | otherwise = endlessFib !! (n - 1)
+      where endlessFib = 0 : 1 : zipWith (+) endlessFib (drop 1 endlessFib)
+
