@@ -165,3 +165,4 @@ produce an endless list like: x -> f x -> f (f x) -> ... -> f.....f(x)
 iterate' :: (a -> a) -> a -> [a]
 iterate' f x = x : iterate' f (f x)
 
+
