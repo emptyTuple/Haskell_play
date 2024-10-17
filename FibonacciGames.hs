@@ -33,3 +33,6 @@ getNthFib n
   | otherwise = endlessFib !! (n - 1)
       where endlessFib = 0 : 1 : zipWith (+) endlessFib (drop 1 endlessFib)
 
+sumOdd :: [Integer] -> Integer
+sumOdd = foldr (\x s -> if odd x then x + s else s) 0
+
