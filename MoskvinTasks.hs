@@ -1,6 +1,7 @@
 module MoskvinTasks where
 
 import Data.Char
+import Data.List (unfoldr)
 
 -- Некоторые задачи с курса Дениса Москвина
 
@@ -140,3 +141,25 @@ meanList = someFun . foldr someFoldingFun someIni
 -}
 meanList :: [Double] -> Double
 meanList = uncurry (/) . foldr (\x (s, l) -> (x + s, l + 1)) (0, 0)
+
+{-
+Используя однократный вызов свертки, реализуйте функцию evenOnly, которая выбрасывает 
+из списка элементы, стоящие на нечетных местах, оставляя только чётные.
+GHCi> evenOnly [1..10]
+>> [2,4,6,8,10]
+GHCi> evenOnly ['a'..'z']
+>> "bdfhjlnprtvxz"
+-}
+evenOnly :: [a] -> [a]
+evenOnly = undefined
+
+{-
+Используя unfoldr, реализуйте функцию, которая возвращает в обратном алфавитном порядке
+список символов, попадающих в заданный парой диапазон. Попадание символа x в диапазон 
+пары (a,b) означает, что x >= a и x <= b.
+GHCi> revRange ('a','z')
+>> "zyxwvutsrqponmlkjihgfedcba"
+-}
+revRange :: (Char,Char) -> [Char]
+revRange = unfoldr (\(a, b) -> if pred a >= b then Nothing else Just (b, (a, pred b)))
+
