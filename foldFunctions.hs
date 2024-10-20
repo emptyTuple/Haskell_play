@@ -324,4 +324,17 @@ iterate''' f = unfold' (\x -> (x, f x))
    >> Just 42
 -}
 
+{- Реализуем функцию unfoldr, присутствующую в стандартной библиотеке.
+   Тип данных Maybe поможет реализовать возможность создания конечных
+   списков.
+-}
+unfoldr' :: (b -> Maybe (a, b)) -> b -> [a]
+unfoldr' f ini = helper $ f ini 
+  where
+    helper (Just (x, ini'))  = x : unfoldr' f ini'
+    helper Nothing           = []
 
+{- Для примера сгенерируем список чисел диапазона от 0 до 15
+   λ: unfoldr' (\x -> if x > 15 then Nothing else Just (x, x + 2) ) 0
+   >> [0,2,4,6,8,10,12,14]
+-}
